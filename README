@@ -1,1 +1,122 @@
-This is a first repository uploaded on github. I have made changes to the file.
+For initializing the local directory as a git repostory
+
+$git init
+
+To map a remote called origin with local repository
+$git remote add origin <URL-of-repo>
+Eg:
+$git remote add origin http://192.168.6.5:8060/vikas.yadav/payprowebapp.git
+
+To add Files
+$git add *
+(All files are added to stage except the files whose name starts with . (namely
+configuration files))
+
+$git add .
+(All files are added to stage including files that starts with a .)
+To commit a file to repository
+$git commit -m “Fixed a bug”
+
+(Added files are added to the repository and are ready for pushing to the remote)
+To push changes from local repository to the master branch of the remote. $git push origin master
+To create a new branch
+$git checkout -b <branchname>
+Eg:
+$git checkout -b development
+
+To switch to a different branch
+$git checkout <branch-name>
+
+To create a newly created branch on the remote/ To push the changes from
+local branch to the remote. $ git push origin <branch-name>
+Eg:
+$ git push origin development
+
+To delete a local branch
+$git branch - d <branch-name>
+Eg:
+$git branch -d hotfix-branch
+
+To pull changes from the remote branch called development. 
+$git pull origin development
+
+To delete the branch from remote
+$git push origin --delete <remote-branch-name>
+Eg:
+$git push origin --delete hotfix-branch
+
+To reset back to earlier commit in local and remote
+$git reset --hard <commit-id>
+
+$git push -f origin master (If the commit has already been pushed to the
+remote)
+Note: Starting six characters can also be used while providing commit-id instead
+of using full commit hex. 
+
+To see the difference between two local branches
+$git diff <branch1> <branch2>
+
+To see the difference between local and remote branches
+$git diff branch1 origin/branch1
+
+To merge changes from development to test locally and pushing it to the
+remote. 
+$git checkout test
+$git merge development
+$git push origin test
+
+To remove a file from the local repository
+$git rm <file>
+Eg:
+$git rm WebContent/WEB-INF/jsp/transactions.jsp
+$git rm -r <folder>
+Eg:
+$git rm -r WebContent/js
+
+To mark a file as untracked
+$git rm --cached <file_path>
+Eg:
+$git rm --cached file1.js
+
+To mark a folder as untracked
+$git rm --cached <folder>/*
+Eg:
+$git rm --cached target/*
+
+To commit only tracked files
+$git commit -a -m "commit message"
+
+To ignore the files/folders on push
+Create a file named .gitignore (To create this file on windows write the filename
+as .gitignore.)
+Mention the files names/foldernames in the .gitignore file as follows
+File1.txt
+Folder1/
+
+To discard local changes
+Scenario: You have modified a file in the working directory but have not added it
+for staging and you want to discard changes made to the file. 
+$git restore <filepath>
+Eg:
+$git restore WebContent/WEB-INF/jsp/transactions.jsp
+
+To unstage changes (Undo git add <file>)
+$ git reset <file1>
+To unstage all changes(Undo git add *)
+$ git reset
+
+To undo commit
+$git reset HEAD~ (To undo most recent commit)
+$git reset HEAD~2 (To undo last two commits)
+
+To see the status of local repository
+$git status
+
+To see the list of the commits
+$git log
+
+Note: Always commit .gitignore file so that unnecessary files are not tracked
+
+References
+https://git-scm.com/doc
+https://docs.gitlab.com/
